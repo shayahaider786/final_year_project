@@ -1,0 +1,595 @@
+/********** Template CSS **********/
+:root {
+    --primary: #006837;
+    --light: #F3F6F9;
+    --dark: #191C24;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    transition: .5s;
+}
+
+.btn.btn-primary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 50px;
+}
+
+
+/*** Layout ***/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--light);
+    transition: 0.5s;
+    z-index: 999;
+}
+
+.content {
+    margin-left: 250px;
+    min-height: 100vh;
+    background: #FFFFFF;
+    transition: 0.5s;
+}
+
+@media (min-width: 992px) {
+    .sidebar {
+        margin-left: 0;
+    }
+
+    .sidebar.open {
+        margin-left: -250px;
+    }
+
+    .content {
+        width: calc(100% - 250px);
+    }
+
+    .content.open {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+
+    .sidebar.open {
+        margin-left: 0;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+
+/*** Navbar ***/
+.sidebar .navbar .navbar-nav .nav-link {
+    margin: 5px 0px;
+    padding: 25px 20px;
+    color: var(--dark);
+    font-weight: 500;
+    border-left: 3px solid var(--light);
+    border-radius: 0 30px 30px 0;
+    outline: none;
+    background-color: #F5F5F5;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover,
+.sidebar .navbar .navbar-nav .nav-link.active {
+    color: #FFFFFF;
+    border-color: var(--primary);
+    background: linear-gradient(180deg, #80ED99 0%, #006837 100%);
+    padding: 20px;
+}
+
+.sidebar .navbar .navbar-nav .nav-link i {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 40px;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover i,
+.sidebar .navbar .navbar-nav .nav-link.active i {
+    background: var(--light);
+}
+
+.sidebar .navbar .dropdown-toggle::after {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transition: .5s;
+}
+
+.sidebar .navbar .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+.sidebar .navbar .dropdown-item {
+    padding-left: 25px;
+    border-radius: 0 30px 30px 0;
+}
+
+.content .navbar .navbar-nav .nav-link {
+    margin-left: 25px;
+    padding: 12px 0;
+    color: var(--dark);
+    outline: none;
+}
+
+.content .navbar .navbar-nav .nav-link:hover,
+.content .navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.content .navbar .sidebar-toggler,
+.content .navbar .navbar-nav .nav-link i {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 40px;
+}
+
+.content .navbar .dropdown-toggle::after {
+    margin-left: 6px;
+    vertical-align: middle;
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transition: .5s;
+}
+
+.content .navbar .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+@media (max-width: 575.98px) {
+    .content .navbar .navbar-nav .nav-link {
+        margin-left: 15px;
+    }
+}
+
+
+/*** Date Picker ***/
+.bootstrap-datetimepicker-widget.bottom {
+    top: auto !important;
+}
+
+.bootstrap-datetimepicker-widget .table * {
+    border-bottom-width: 0px;
+}
+
+.bootstrap-datetimepicker-widget .table th {
+    font-weight: 500;
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+    background: var(--primary);
+}
+
+.bootstrap-datetimepicker-widget table td.today::before {
+    border-bottom-color: var(--primary);
+}
+
+
+/*** Testimonial ***/
+.progress .progress-bar {
+    width: 0px;
+    transition: 2s;
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-dots {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 5px solid var(--primary);
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--dark);
+    border-color: var(--primary);
+}
+
+
+.chartBox {
+    background-color: #80ED99;
+    border: 2px solid #006837;
+    border-radius: 20px;
+}
+
+.chartBox p {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 21.6px;
+    letter-spacing: 0.05em;
+    color: #006837;
+}
+
+.chartBox h6 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 60px;
+    letter-spacing: 0.05em;
+
+}
+
+.adminCompetition {
+    box-shadow: 0px 0px 10px 4px #0000001A;
+    border-radius: 20px;
+    margin: 40px 10px 20px;
+}
+
+.adminCompetition h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 33.6px;
+    letter-spacing: 0.05em;
+    color: #006837;
+}
+
+.adminCompetition a {
+    background: linear-gradient(185.97deg, #80ED99 4.68%, #509E3B 95.32%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.adminCompetition table thead tr {
+    border-bottom: 1px solid #8CC63F;
+}
+
+.adminCompetition table thead th {
+    border-right: 1px solid #8CC63F
+}
+
+.adminCompetition table tbody td {
+    border-right: 1px solid #8CC63F
+}
+
+#labelTd {
+    background-color: #80ED99;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #006837;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 21.6px;
+}
+
+#labelTd span {
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 30px;
+
+}
+
+#labelTdTwo {
+    background-color: #006837;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #ffff;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 21.6px;
+}
+
+#labelTdTwo span {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30px;
+}
+
+.compitionSection a {
+    background: linear-gradient(185.97deg, #80ED99 4.68%, #509E3B 95.32%);
+    color: #ffff;
+    padding: 7px 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24.38px;
+}
+
+.competitionBox {
+    box-shadow: 0px 0px 10px 4px #0000001A;
+    border-radius: 20px;
+    padding: 15px 20px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.competitionBox h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 33.6px;
+    color: #006837;
+}
+
+.competitionBox h2 span {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+
+}
+
+.competitionBox label {
+    background-color: #006837;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 21.6px;
+    color: #ffff;
+}
+
+.competitionBox label span {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 26.4px;
+
+}
+
+.competitionBox p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+}
+
+.competitionFormSection h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 33.6px;
+    color: #006837;
+}
+
+.competitionForm label {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 21.6px;
+    color: #006837;
+}
+
+.competitionForm input {
+    border-radius: 20px;
+    border: 2px solid #006837;
+}
+
+.competitionForm textarea {
+    border-radius: 20px;
+    border: 2px solid #006837;
+}
+
+.competitionForm .uploaderFile {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    border: 1px solid #006837;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.competitionForm .uploaderFile input {
+    display: none;
+}
+
+.uploaderBtn,
+.uploaderImgBtn {
+    background: linear-gradient(270deg, #80ed99 0%, #22577a 100%);
+    border-radius: 50px;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#uploadVideoBtn {
+    width: 20%;
+}
+
+.uploaderBtn span,
+.uploaderImgBtn span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26.4px;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin-left: 10px;
+}
+
+
+.media_display {
+    background-color: #f9f9f9;
+    width: 100%;
+    height:auto;
+}
+.submitBtn button {
+    background: linear-gradient(185.97deg, #80ED99 4.68%, #509E3B 95.32%);
+    margin: 0 auto;
+    width: 15%;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffff;
+}
+
+.customerLink a {
+    text-decoration: none;
+    background: linear-gradient(185.97deg, #80ED99 4.68%, #509E3B 95.32%);
+    color: #ffff;
+    padding: 7px 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 800;
+
+}
+
+.actionBtn h3 {
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 9.6px;
+    background-color: #80ED99;
+    border-radius: 30px;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.actionsBtns a{
+    background: none !important;
+    border-radius: 0px !important;
+    padding: 0px !important;
+}
+
+.borderBottom{
+    border-bottom: 0.5px solid #8CC63F80;
+}
+
+#searchBtn{
+    border-radius: 20px;
+    border: 1px solid #80ED99;
+}
+
+#searchBtn input{
+    border-radius: 20px;
+}
+
+
+.edit-icon {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    cursor: pointer;
+}
+
+.uploaderFile {
+    position: relative;
+}
+
+.media-display {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.media-display video,
+.media-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.form-check-input:checked {
+    background-color: #80ED99;
+    border-color: #80ED99;
+    border-radius: 20px;
+}
+.form-check-input:focus {
+    border-color: #80ED99;
+    outline: 0;
+    box-shadow: 0 0 0 -2.75rem #80ED99;
+}
+.form-check-input[type=checkbox] {
+    border-radius: 20px;
+    font-size: 20px;
+}
