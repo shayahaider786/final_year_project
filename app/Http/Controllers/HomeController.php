@@ -34,13 +34,12 @@ class HomeController extends Controller
     {
         $customers = Customer::with('user')->get();
         $customerCount = Customer::count();
-        $copetitionUserCount = CompetitionUserEntry::count();
         
         $decryptedPassword=[];
         foreach($customers as $customer){
             $decryptedPassword[$customer->user->id] = Crypt::decryptString($customer->user->password);
         }
-        return view('home' , compact('customers', 'customerCount','decryptedPassword','copetitionUserCount'));
+        return view('home' , compact('customers', 'customerCount','decryptedPassword'));
     }
     public function userHome()
     {

@@ -45,16 +45,14 @@
         <div class="sidebar bg-light pe-4 pb-3">
             <nav class="navbar bg-light text-center">
                 <a href="{{route('home')}}" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary">QROBYTE</h3>
+                    <h3 class="text-primary">Qr Media Hub</h3>
                     <h6>Welcome {{ Auth::user()->name }}</h6>
                 </a>
                 <div class="navbar-nav w-100">
                     <a href="{{ route('home') }}" class="nav-item nav-link {{ Request::routeIs('home') ? 'active' : '' }}">Dashboard</a>
                     <a href="{{ route('customerIndex') }}" class="nav-item nav-link {{ Request::routeIs('customerIndex') ? 'active' : '' }}">Customer</a>
-                    <a href="{{ route('competitionIndex') }}" class="nav-item nav-link {{ Request::routeIs('competitionIndex') ? 'active' : '' }}">Competition</a>
                 </div>
             </nav>
-            <img src="/backend/asset/images/loginpic.png" alt="loginpic" class="position-absolute bottom-0 start-0" width="60%">
         </div>
         <!-- Sidebar End -->
 

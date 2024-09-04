@@ -5,7 +5,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\CompetitionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,10 +28,7 @@ Auth::routes();
 Route::get('/', [BackendController::class, 'index'])->name('index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/login', [BackendController::class, 'login'])->name('login');
-Route::get('/register', [BackendController::class, 'index'])->name('index');
-Route::get('/competitionsMain', [CompetitionController::class, 'competitionMain'])->name('competitionMain');
-// Route::get('/competition-Info', [CompetitionController::class, 'competitionInfo'])->name('competitionInfo');
-Route::get('/competition-Info/{id}', [CompetitionController::class, 'competitionInfo'])->name('competitionInfo');
+// Route::get('/register', [BackendController::class, 'register'])->name('register');
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
   
@@ -46,18 +42,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::delete('/customers/{customer}', [BackendController::class, 'destroy'])->name('destroy');
     Route::get('/admin/genrate-qr', [BackendController::class, 'genrateqr'])->name('genrateqr');
     Route::get('/generate-pdf', [HomeController::class, 'generatePDF'])->name('generate.pdf');
-    
-    
-    
-    Route::get('competitionsAdmin', [CompetitionController::class, 'competitionIndex'])->name('competitionIndex');
-    Route::get('competitionsAdminCreate', [CompetitionController::class, 'competitionCreate'])->name('competitionCreate');
-    Route::post('competitionsStore', [CompetitionController::class, 'store'])->name('competitions.store');
-    Route::get('competitionAdminEdit/{id}', [CompetitionController::class, 'competitionEdit'])->name('competitionEdit');
-    Route::put('competitionAdmin/{id}', [CompetitionController::class, 'update'])->name('competitionUpdate');
-    Route::delete('/competitions/{id}', [CompetitionController::class, 'destroy'])->name('competitions.destroy');
-
-    Route::post('/competitions/{competition}/userenter', [CompetitionController::class, 'storeUserEntry'])->name('competitions.enter');
-
 });
 
 

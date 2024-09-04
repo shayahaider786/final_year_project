@@ -12,14 +12,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3 chartBox">
-                <div class="rounded text-center">
-                    <div>
-                        <p class="mb-2 pt-3">COMPETITION ENTRIES </p>
-                        <h6 class="mb-0">{{$copetitionUserCount}}</h6>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Sale & Revenue End -->
