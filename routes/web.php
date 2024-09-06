@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BackendController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ContactController;
 
@@ -23,7 +24,9 @@ use App\Http\Controllers\ContactController;
 
 Auth::routes();
 
-Route::get('/', [BackendController::class, 'index'])->name('index');
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+
+Route::get('/backend', [BackendController::class, 'index'])->name('index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/login', [BackendController::class, 'login'])->name('login');
 
