@@ -1,9 +1,53 @@
 @extends('layouts.frontend')
 @section('content')
 
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+    <!-- slider section -->
+    
+    <div class="hero_area">
+        <section class="slider_section ">
+            <div class="container ">
+            <div class="row">
+                <div class="col-md-6">
+                <div class="detail-box">
+                    <h1>
+                    Fast & Secure <br>
+                    Web Hosting
+                    </h1>
+                    <p>
+                    Anything embarrassing hidden in the middle of text. All the Lorem Ipsuanything embarrassing hidden in the middle of text. All the Lorem Ipsumm </p>
+                    <div class="btn-box">
+                    <a href="" class="btn-1">
+                        Read More
+                    </a>
+                    <a href="{{route('registerUser')}}" class="btn-2">
+                        Register
+                    </a>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="row">
+                    <div class=" col-lg-10 mx-auto">
+                    <div class="img-box">
+                        <img src="frontend/images/slider-img.png" alt="">
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+    <!-- end slider section -->
+
     <!-- service section -->
 
-    <section class="service_section layout_padding">
+    <section class="service_section layout_padding" id="services">
         <div class="container">
         <div class="heading_container heading_center">
             <h2>
@@ -141,7 +185,7 @@
 
     <!-- about section -->
 
-    <section class="about_section layout_padding-bottom">
+    <section class="about_section layout_padding-bottom" id="about">
         <div class="container  ">
         <div class="row">
             <div class="col-md-6">
@@ -209,7 +253,7 @@
 
     <!-- price section -->
 
-    <section class="price_section layout_padding">
+    <section class="price_section layout_padding" id="price">
         <div class="container">
         <div class="heading_container heading_center">
             <h2>
@@ -323,7 +367,7 @@
     <!-- price section -->
 
     <!-- client section -->
-    <section class="client_section ">
+    <section class="client_section" id="client">
         <div class="container">
         <div class="heading_container heading_center">
             <h2>
@@ -459,7 +503,7 @@
     <!-- end client section -->
 
     <!-- contact section -->
-    <section class="contact_section layout_padding-bottom">
+    <section class="contact_section layout_padding-bottom" id="contact">
         <div class="container">
         <div class="heading_container heading_center">
             <h2>

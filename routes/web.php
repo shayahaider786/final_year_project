@@ -25,15 +25,25 @@ use App\Http\Controllers\ContactController;
 Auth::routes();
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/register', [FrontendController::class, 'registerUser'])->name('registerUser');
+Route::post('/customer-register', [FrontendController::class, 'store'])->name('customer.store');
 
-Route::get('/backend', [BackendController::class, 'index'])->name('index');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+// Route to handle PayPal payment success
+Route::get('/payment/success/{customerId}', [FrontendController::class, 'paymentSuccess'])->name('payment.success');
+
+// Route to handle PayPal payment cancellation
+Route::get('/payment/cancel', [FrontendController::class, 'paymentCancel'])->name('payment.cancel');
+
+
+// Route::get('/backend', [BackendController::class, 'index'])->name('index');
+// Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/login', [BackendController::class, 'login'])->name('login');
 
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
   
     Route::get('/adminhome', [HomeController::class, 'index'])->name('home');
+    Route::get('/customer-data', [HomeController::class, 'showCustomer'])->name('showCustomer');
     Route::get('/admin/create', [BackendController::class, 'create'])->name('create');
     Route::post('/create-customer', [BackendController::class, 'store'])->name('store');
     Route::get('/customers/{customer}', [BackendController::class, 'show'])->name('show');

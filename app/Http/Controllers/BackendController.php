@@ -15,21 +15,21 @@ use Illuminate\Http\Request;
 
 class BackendController extends Controller
 {
-  public function index(){
-    return view('index');
-  }
-  public function login(){
-    return view('backend.login');
-  }
-  public function create(){
-    return view('backend.create');
-  }
-  public function genrateqr(){
-    return view('backend.genrateqr');
-  }
+    public function index(){
+        return view('index');
+    }
+  
+    public function login(){
+        return view('backend.login');
+    }
+    public function create(){
+        return view('backend.create');
+    }
+    public function genrateqr(){
+        return view('backend.genrateqr');
+    }
 
-  public function store(Request $request)
-    {
+    public function store(Request $request){
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required',
@@ -87,8 +87,7 @@ class BackendController extends Controller
 
         return redirect()->route('home')->with('success', 'Customer created successfully.');
     }
-  public function edit(Customer $customer)
-    {
+    public function edit(Customer $customer){
         $customer->load('images');
         return view('backend.edit',compact('customer'));
     }

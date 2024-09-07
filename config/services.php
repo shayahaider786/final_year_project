@@ -31,4 +31,15 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'stripe' => [
+    'key' => env('STRIPE_KEY'),
+    'secret' => env('STRIPE_SECRET'),
+    ],
+
+    // 'paypal' => [
+    //     'client_id' => env('PAYPAL_CLIENT_ID'),
+    //     'client_secret' => env('PAYPAL_CLIENT_SECRET'),
+    //     'mode' => env('PAYPAL_MODE', 'sandbox'), // Default to sandbox mode
+    // ],
+
 ];

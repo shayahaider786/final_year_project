@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Images;
+use App\Models\CustomerData;
 use Illuminate\Support\Facades\Crypt;
+
 // use Barryvdh\DomPDF\Facade as PDF;
 // use PDF;
 use Illuminate\Support\Facades\Storage;
@@ -40,6 +42,13 @@ class HomeController extends Controller
         }
         return view('home' , compact('customers', 'customerCount','decryptedPassword'));
     }
+    public function showCustomer()
+    {
+        
+        $customersData = CustomerData::all();
+        return view('backend.customerData', compact('customersData'));
+    }
+    
     public function userHome()
     {
         return view('userHome');

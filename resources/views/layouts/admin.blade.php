@@ -56,8 +56,15 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="{{route('home')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{route('create')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Customer</a>
+                    <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">
+                        <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                    <a href="{{ route('showCustomer') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'showCustomer' ? 'active' : '' }}">
+                        <i class="fa fa-th me-2"></i>All Customer Data
+                    </a>
+                    <a href="{{ route('create') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'create' ? 'active' : '' }}">
+                        <i class="fa fa-th me-2"></i>Customer
+                    </a>
                 </div>
             </nav>
         </div>
