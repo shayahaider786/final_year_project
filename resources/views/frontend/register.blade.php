@@ -60,12 +60,6 @@
                                 </select>
                             </div>
 
-                            <!-- Stripe Elements -->
-                            <div id="card-element" class="form-group d-none">
-                                <!-- A Stripe Element will be inserted here. -->
-                            </div>
-                            <div id="card-errors" role="alert"></div>
-
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -73,49 +67,4 @@
             </div>
         </div>
     </section>
-
-    <!-- Stripe JS -->
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var stripe = Stripe('{{ config('services.stripe.key') }}');
-            var elements = stripe.elements();
-            
-            var cardElement = elements.create('card');
-            var cardElementContainer = document.getElementById('card-element');
-            var paymentMethodSelect = document.getElementById('payment_method');
-            var form = document.getElementById('payment-form');
-
-            paymentMethodSelect.addEventListener('change', function() {
-                if (paymentMethodSelect.value === 'stripe') {
-                    cardElementContainer.classList.remove('d-none');
-                    cardElement.mount('#card-element');
-                } else {
-                    cardElementContainer.classList.add('d-none');
-                    cardElement.unmount();
-                }
-            });
-
-            form.addEventListener('submit', function(event) {
-                if (paymentMethodSelect.value === 'stripe') {
-                    event.preventDefault();
-                    
-                    stripe.createToken(cardElement).then(function(result) {
-                        if (result.error) {
-                            var errorElement = document.getElementById('card-errors');
-                            errorElement.textContent = result.error.message;
-                        } else {
-                            var hiddenInput = document.createElement('input');
-                            hiddenInput.setAttribute('type', 'hidden');
-                            hiddenInput.setAttribute('name', 'stripeToken');
-                            hiddenInput.setAttribute('value', result.token.id);
-                            form.appendChild(hiddenInput);
-                            
-                            form.submit();
-                        }
-                    });
-                }
-            });
-        });
-    </script>
 @endsection

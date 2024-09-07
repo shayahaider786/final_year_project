@@ -56,27 +56,37 @@ class FrontendController extends Controller
       }
       
       // Handle Stripe Payment
-      protected function handleStripePayment(Request $request, $amount, $customer)
-      {
-          \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-      
-          try {
-              // Create a charge
-              $charge = \Stripe\Charge::create([
-                  'amount' => $amount * 100, // Stripe expects amount in cents
-                  'currency' => 'usd',
-                  'description' => 'Payment for ' . $request->plan . ' plan',
-                  'source' => $request->stripeToken,
-              ]);
-      
-              // Update payment status
-              $customer->update(['payment_status' => 'completed']);
-      
-              return redirect()->route('index')->with('success', 'Payment successful and plan selected.');
-          } catch (\Exception $e) {
-              return redirect()->route('index')->with('error', $e->getMessage());
-          }
-      }
+    // Handle Stripe Payment using Checkout
+protected function handleStripePayment(Request $request, $amount, $customer)
+{
+    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    try {
+        // Create a Checkout Session
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'usd',
+                    'product_data' => [
+                        'name' => $request->plan . ' plan',
+                    ],
+                    'unit_amount' => $amount * 100, // Stripe expects amount in cents
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => route('payment.success', $customer->id) . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('payment.cancel'),
+        ]);
+
+        // Redirect to Stripe Checkout page
+        return redirect($session->url);
+    } catch (\Exception $e) {
+        return redirect()->route('index')->with('error', $e->getMessage());
+    }
+}
+
       
       // Handle PayPal Payment
       protected function handlePaypalPayment($amount, $customer)
@@ -117,9 +127,19 @@ class FrontendController extends Controller
       public function paymentSuccess(Request $request, $customerId)
       {
           $customer = CustomerData::find($customerId);
+      
+          // You can optionally use the session_id to verify the payment
+          $session_id = $request->query('session_id');
+      
           // Update payment status
           $customer->update(['payment_status' => 'completed']);
           
           return redirect()->route('index')->with('success', 'Payment successful for ' . $customer->plan . ' plan.');
       }
+      
+      public function paymentCancel()
+      {
+          return redirect()->route('index')->with('error', 'Payment was cancelled.');
+      }
+      
 }
