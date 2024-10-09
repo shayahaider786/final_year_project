@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 mt-5">
+                        {{-- <div class="col-md-12 mt-5">
                             <div class="d-flex">
                                 <label class="profileHeading mt-2">Description</label>
                                 <i class="fa-solid fa-pen imagePickerTow pt-2 ms-4"></i>
@@ -80,9 +80,9 @@
                             <textarea class="form-control mt-2 profileArea" id="detail" name="detail" placeholder="Born 1915 passed away 2000"
                                 id="floatingTextarea2" style="height: 200px"></textarea>
                             <p id="detail_error" class="profilePara">Max Characters: 1500</p>
-                        </div>
+                        </div> --}}
                         <div class="col-md-12 mt-4">
-                            <div class="d-flex">
+                            {{-- <div class="d-flex">
                                 <label class="profileHeading mt-2">Your images </label>
                                 <label for="imagePicker"><i class="fa-solid fa-pen imagePickerTow pt-2 ms-4"></i></label>
                                 <input type="file" name="images[]" class="form-control d-none"  accept="image/*" id="imagePicker" multiple>
@@ -99,7 +99,7 @@
                                     </div>
                                     <div id="videoPreview" style="width: 50% "></div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="row mt-5">
                                 <div class="submiteButton text-center">

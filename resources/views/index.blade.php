@@ -71,7 +71,7 @@
                     <div class="left">
                         <h2>WELCOME TO</h2>
                         <div class="text-end pt-3">
-                            <span>QROBYTE</span>
+                            <span>QR Media Hub</span>
                         </div>
                     </div>
                 </div>

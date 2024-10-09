@@ -31,13 +31,12 @@ class BackendController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required',
-            'detail' => 'required',
             'email' => 'required|unique:users',
             'password' => 'required|min:8',
-            'video' => 'required|file|mimetypes:video/mp4', // Add validation rule for video
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video' => 'file|mimetypes:video/mp4', // Add validation rule for video
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $userInput = $request->only(['name', 'email', 'password']); // Get user input
@@ -45,7 +44,9 @@ class BackendController extends Controller
         $password = $request->password; // Generate a random password
         $hashedPassword = Crypt::encryptString($password);
         $userInput['password']=$hashedPassword;
+
         $user = User::create($userInput); // Create the user record
+
         $customerInput = $request->except(['images', 'name', 'email', 'password']); // Get customer input
         $customerInput['detail'] = $request->detail;
 
@@ -87,6 +88,7 @@ class BackendController extends Controller
 
         return redirect()->route('home')->with('success', 'Customer created successfully.');
     }
+
     public function edit(Customer $customer){
         $customer->load('images');
         return view('backend.edit',compact('customer'));

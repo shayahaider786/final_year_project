@@ -110,7 +110,7 @@
 
 {{-- text size  --}}
 
-<script>
+{{-- <script>
     document.getElementById('customerForm').addEventListener('submit', function(event) {
         event.preventDefault();
         var textareaValue = document.getElementById('detail').value.trim();
@@ -126,7 +126,7 @@
         }
         this.submit();
     });
-</script>
+</script> --}}
 
 
 {{-- image deleted --}}

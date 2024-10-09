@@ -28,9 +28,10 @@
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
                         <tr class="text-dark">
-                            <th scope="col">Avatar</th>
+                            {{-- <th scope="col">Avatar</th> --}}
+
                             <th scope="col">Name</th>
-                            <th scope="col">Description</th>
+                            {{-- <th scope="col">Description</th> --}}
                             <th scope="col">Email</th> <!-- Adjust the width as needed -->
                             <th scope="col">Password</th>
                             <th scope="col">QR Code</th>
@@ -40,9 +41,9 @@
                     <tbody>
                         @foreach ($customers as $customer)
                         <tr>
-                            <td><img src="/{{ $customer->avatar }}" width="100px"></td>
+                            {{-- <td><img src="/{{ $customer->avatar }}" width="100px"></td> --}}
                             <td>{{ $customer->user->name }}</td>
-                            <td>{{ $customer->detail }}</td>
+                            {{-- <td>{{ $customer->detail }}</td> --}}
                             <td style="width: 100px;">{{ $customer->user->email }}</td> <!-- Adjust the width as needed -->
                             <td>{{ $decryptedPassword[$customer->user->id] }}</td>
                             <td>
@@ -51,7 +52,7 @@
                             <td colspan="2" class="d-flex align-items-center justify-content-evenly pt-5">
                                 <button class="btn btn-info" onclick="downloadSVG('{{ $customer->user->id }}')">Download</button>
                                 <form action="{{ route('destroy',$customer->id) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('edit',$customer->id) }}">Edit</a>
+                                    {{-- <a class="btn btn-primary" href="{{ route('edit',$customer->id) }}">Edit</a> --}}
                                     @csrf
                                     @method('DELETE')
                 

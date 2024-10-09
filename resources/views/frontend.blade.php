@@ -15,12 +15,10 @@
                 <div class="col-md-6">
                 <div class="detail-box">
                     <h1>
-                    Fast & Secure <br>
-                    Web Hosting
+                        QR Media Hub – Store, Share, and Access Media Seamlessly
                     </h1>
-                    <p>
-                    Anything embarrassing hidden in the middle of text. All the Lorem Ipsuanything embarrassing hidden in the middle of text. All the Lorem Ipsumm </p>
-                    <div class="btn-box">
+                    <p>QR Media Hub is your all-in-one media storage and sharing platform. Similar to Google Drive, QR Media Hub allows users to upload images, videos, and descriptions securely to a live server. With an easy-to-use interface, users can store their personal media files and share them effortlessly by generating unique QR codes. </p>              
+                        <div class="btn-box">
                     <a href="" class="btn-1">
                         Read More
                     </a>
@@ -49,137 +47,132 @@
 
     <section class="service_section layout_padding" id="services">
         <div class="container">
-        <div class="heading_container heading_center">
+          <div class="heading_container heading_center">
             <h2>
-            Our Services
+              Our Services
             </h2>
-        </div>
+          </div>
         </div>
         <div class="container ">
-        <div class="row">
+          <div class="row">
             <div class="col-md-6 col-lg-4">
-            <div class="box ">
+              <div class="box ">
                 <div class="img-box">
-                <img src="frontend/images/s1.png" alt="">
+                  <img src="frontend/images/s1.png" alt="">
                 </div>
                 <div class="detail-box">
-                <h4>
-                    Shared Hosting
-                </h4>
-                <p>
-                    Generators on the Internet tend to repeat predefined chunks as necessary
-                </p>
-                <a href="">
+                  <h4>
+                    Secure Media Storage
+                  </h4>
+                  <p>
+                    Store your images and videos securely in the cloud. Access your files anytime from anywhere with our robust storage infrastructure.
+                  </p>
+                  <a href="">
                     Read More
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                </a>
+                  </a>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="col-md-6 col-lg-4">
-            <div class="box ">
+              <div class="box ">
                 <div class="img-box">
-                <img src="frontend/images/s2.png" alt="">
+                  <img src="frontend/images/s2.png" alt="">
                 </div>
                 <div class="detail-box">
-                <h4>
-                    Dedicated Hosting
-                </h4>
-                <p>
-                    Generators on the Internet tend to repeat predefined chunks as necessary
-                </p>
-                <a href="">
+                  <h4>
+                    QR Code Sharing
+                  </h4>
+                  <p>
+                    Easily generate and share QR codes to give others access to your media files. No need for complex links—just scan and view.
+                  </p>
+                  <a href="">
                     Read More
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                </a>
+                  </a>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="col-md-6 col-lg-4 ">
-            <div class="box ">
+              <div class="box ">
                 <div class="img-box">
-                <img src="frontend/images/s3.png" alt="">
+                  <img src="frontend/images/s3.png" alt="">
                 </div>
                 <div class="detail-box">
-                <h4>
-                    Cloud Hosting
-                </h4>
-                <p>
-                    Generators on the Internet tend to repeat predefined chunks as necessary
-                </p>
-                <a href="">
+                  <h4>
+                    High-Speed Uploads
+                  </h4>
+                  <p>
+                    Upload your media quickly and efficiently with our high-speed server technology. Large video files and photo albums are uploaded in no time.
+                  </p>
+                  <a href="">
                     Read More
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                </a>
+                  </a>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="col-md-6 col-lg-4">
-            <div class="box ">
+              <div class="box ">
                 <div class="img-box">
-                <img src="frontend/images/s4.png" alt="">
+                  <img src="frontend/images/s4.png" alt="">
                 </div>
                 <div class="detail-box">
-                <h4>
-                    VPS Hosting
-                </h4>
-                <p>
-                    Generators on the Internet tend to repeat predefined chunks as necessary
-                </p>
-                <a href="">
+                  <h4>
+                    Media Management
+                  </h4>
+                  <p>
+                    Manage your media effortlessly with our user-friendly dashboard. Organize, categorize, and search your media with ease.
+                  </p>
+                  <a href="">
                     Read More
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                </a>
+                  </a>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="col-md-6 col-lg-4">
-            <div class="box ">
+              <div class="box ">
                 <div class="img-box">
-                <img src="frontend/images/s5.png" alt="">
+                  <img src="frontend/images/s5.png" alt="">
                 </div>
                 <div class="detail-box">
-                <h4>
-                    Wordpress Hosting
-                </h4>
-                <p>
-                    Generators on the Internet tend to repeat predefined chunks as necessary
-                </p>
-                <a href="">
+                  <h4>
+                    Admin QR Access
+                  </h4>
+                  <p>
+                    Admins can log in securely using a generated QR code, providing a fast and secure method for system access and management.
+                  </p>
+                  <a href="">
                     Read More
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                </a>
+                  </a>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="col-md-6 col-lg-4">
-            <div class="box ">
+              <div class="box ">
                 <div class="img-box">
-                <img src="frontend/images/s6.png" alt="">
+                  <img src="frontend/images/s6.png" alt="">
                 </div>
                 <div class="detail-box">
-                <h4>
-                    Domain Name
-                </h4>
-                <p>
-                    Generators on the Internet tend to repeat predefined chunks as necessary
-                </p>
-                <a href="">
+                  <h4>
+                    Media Sharing
+                  </h4>
+                  <p>
+                    Share your uploaded images and videos with friends, family, or colleagues with a simple QR scan, ensuring quick and hassle-free access.
+                  </p>
+                  <a href="">
                     Read More
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                </a>
+                  </a>
                 </div>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
-    </section>
+      </section>
+      
 
     <!-- end service section -->
 
@@ -196,7 +189,7 @@
                 </h2>
                 </div>
                 <p>
-                Words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks </p>
+                    QR Media Hub is your all-in-one media storage and sharing platform. Similar to Google Drive, QR Media Hub allows users to upload images, videos, and descriptions securely to a live server. With an easy-to-use interface, users can store their personal media files and share them effortlessly by generating unique QR codes.                </p>
                 <a href="">
                 Read More
                 </a>
