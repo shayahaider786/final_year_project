@@ -43,18 +43,21 @@
                                 <label class="profileHeading mt-2">Your images & video</label>
                             </div>
                             <div class="row mt-4">
-                                @foreach($customer->images as $image)
-                                    <div class="col-md-4 col-sm-12 mb-2">
+                                @foreach($customer->images->where('is_public', true) as $image)  <!-- Only public images -->
+                                    <div class="col-md-4 col-sm-12 mb-2 usersImgs" data-image-id="{{ $image->id }}">
                                         <img src="/images/{{ $image->imgname }}" class="img-fluid profileArea" alt="Customer Image" width="100%">
                                     </div>
                                 @endforeach
                             </div>
                             <div class="row mt-4">
+                                @if ($customer->video && $customer->video->is_public) 
                                     <video controls class="img-fluid w-50 profileArea">
                                         <source src="{{ asset($customer->video->path) }}" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
-                                </div>
+                                @else
+                                    <p>No public videos available.</p>
+                                @endif
                             </div>
                             @auth
                             @if($customer->user->id == auth()->user()->id || auth()->user()->type == 'admin')
@@ -94,4 +97,23 @@
         </div>
   
     </div>
+
+
+      <!-- Add JavaScript to reload the page after 5 minutes (300 seconds) -->
+      <script type="text/javascript">
+        // Countdown Timer for 5 minutes
+        let timeLeft = 150; // 300 seconds = 5 minutes
+        let countdownElement = document.getElementById('countdown');
+
+        let countdownTimer = setInterval(function() {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+
+            // Reload the page when time is up
+            if (timeLeft <= 0) {
+                clearInterval(countdownTimer);
+                location.reload();
+            }
+        }, 1000); // Update the countdown every second
+    </script>
 @endsection

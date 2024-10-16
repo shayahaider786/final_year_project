@@ -14,14 +14,22 @@ class CustomerController extends Controller
     public function show()
     {
         $customer = Auth::user()->customer;
-        $customer->load('images');
+        $customer->load(['images' => function ($query) {
+            $query->where('is_public', true);  // Only show public images
+        }]);
         return view('backend.show',compact('customer'));
     }
     public function showData($id)
     {
-        $customer = User::find($id)->customer;
+        $customer = User::find($id)?->customer;
+
+        // Check if the customer exists
+        if (!$customer) {
+            return redirect()->route('some.route')->with('error', 'Customer not found.');
+        }
+
         $customer->load('images');
-        return view('backend.show',compact('customer'));
+        return view('backend.show', compact('customer'));
     }
 
     public function edit()
@@ -42,6 +50,8 @@ class CustomerController extends Controller
             'detail' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'video' => 'file|mimetypes:video/mp4', // 50MB limit for video
+            'public_videos' => 'nullable|array',
+            'public_videos.*' => 'string',
         ]);
 
         // Update name field in the user table
@@ -68,6 +78,12 @@ class CustomerController extends Controller
                 $customer->images()->create(['imgname' => $imageName]);
             }
         }
+         // Handle public/private images
+        $publicImages = $request->input('public_images', []);  // Get array of public images
+        foreach ($customer->images as $image) {
+            $image->is_public = in_array($image->id, $publicImages);  // Mark image as public if it's in the array
+            $image->save();
+        }
 
         // Process video upload
         if ($request->hasFile('video')) {
@@ -75,7 +91,7 @@ class CustomerController extends Controller
             $videoName = time() . '_' . $request->file('video')->getClientOriginalName();
             $request->file('video')->move($videoPath, $videoName);
 
-            // Delete existing video
+            // Delete existing video if it exists
             if ($customer->video) {
                 Storage::delete($customer->video->path);
                 $customer->video->delete();
@@ -87,10 +103,18 @@ class CustomerController extends Controller
             $customer->video()->save($video);
         }
 
+            // Update public visibility of the video
+        if ($request->has('public_videos')) {
+            $customer->video->is_public = true;
+        } else {
+            $customer->video->is_public = false;
+        }
+
+        $customer->video->save();
         // Update other fields
         $customer->detail = $request->input('detail');
         $customer->save();
-
+        
         return redirect()->route('user.edit')->with('success', 'Profile updated successfully.');
     }
 

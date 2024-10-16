@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->string('imgname');
+            $table->boolean('is_public')->default(false);  // Add is_public column with default value false
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
