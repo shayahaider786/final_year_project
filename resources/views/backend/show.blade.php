@@ -81,16 +81,13 @@
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    
                     <div class="modal-body">
                         <p class="mb-3">Scan to view profile</p>
                         <div class="visible-print text-center">
                             {{-- {!! QrCode::size(100)->generate(route('show', $customer->id)) !!} --}}
                             {!! Storage::disk('public')->get('qr_codes/' . $customer->user->id . '.svg') !!}
-                            
                         </div>
                         <p class="mt-4">{{ $customer->user->name }}</p>
-                        {{-- <a href="#" id="imageLink"><img src="/backend/asset/images/img8.png" alt="img8" width="10%"></a> --}}
                     </div>
                 </div>
             </div>
@@ -99,20 +96,19 @@
     </div>
 
 
-      <!-- Add JavaScript to reload the page after 5 minutes (300 seconds) -->
-      <script type="text/javascript">
-        // Countdown Timer for 5 minutes
-        let timeLeft = 150; // 300 seconds = 5 minutes
-        let countdownElement = document.getElementById('countdown');
+      <!-- JavaScript to reload the page after 10 minutes -->
+    <script type="text/javascript">
+        // Countdown Timer for 10 minutes (600 seconds)
+        let timeLeft = 60; // 10 minutes in seconds
 
+        // Create a function that reloads the page when the time is up
         let countdownTimer = setInterval(function() {
             timeLeft--;
-            countdownElement.textContent = timeLeft;
 
-            // Reload the page when time is up
+            // Check if the time is up, then reload the page
             if (timeLeft <= 0) {
-                clearInterval(countdownTimer);
-                location.reload();
+                clearInterval(countdownTimer); // Stop the timer
+                location.reload(); // Reload the page
             }
         }, 1000); // Update the countdown every second
     </script>
